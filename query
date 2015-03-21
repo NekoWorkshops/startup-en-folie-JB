@@ -1,0 +1,4 @@
+#!/bin/sh
+
+q=$1
+curl -Gi 'localhost:3000' --data-urlencode "q=${q}"
