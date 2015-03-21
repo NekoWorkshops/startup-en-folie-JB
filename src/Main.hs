@@ -21,7 +21,7 @@ appRoutes =
        Left parseError -> do
          setStatus status400
          text $ T.pack $ show parseError
-       Right command -> text $ C.eval command
+       Right command -> text $ C.evalCommand command
 
 main :: IO ()
 main = runSpock 3000 $ spockT id $ appMiddleware >> appRoutes

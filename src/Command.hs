@@ -2,7 +2,7 @@
 
 module Command (
   parseRequest
-  , eval
+  , evalCommand
   ) where
 
 import Data.Text (Text)
@@ -18,7 +18,7 @@ parseRequest txt =
   let parser = addParser
   in parse parser "parseRequest" txt
 
--- | read addition
+-- | addition parser
 -- >>> parse addParser "test" "what is the sum of 12 and 5 ?"
 -- Right (Add 12 5)
 addParser :: Parser Command
@@ -30,9 +30,9 @@ addParser = do
   _ <- string " ?"
   return $ Add (read a) (read b)
 
--- | eval
--- >>> eval $ Add 10 15
+-- | command evaluator
+-- >>> evalCommand $ Add 10 15
 -- "25"
-eval :: Command -> Text
-eval c = case c of
+evalCommand :: Command -> Text
+evalCommand c = case c of
   Add x y ->  T.pack $ show $ x + y
