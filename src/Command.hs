@@ -5,12 +5,13 @@ module Command (
   , evalCommand
   ) where
 
-import Data.Text (Text)
-import qualified Data.Text as T
-import Text.Parsec (parse, string, digit, many1, ParseError)
-import Text.Parsec.Text (Parser)
+import           Data.Text        (Text)
+import qualified Data.Text        as T
+import           Text.Parsec      (ParseError, digit, many1, parse, string)
+import           Text.Parsec.Text (Parser)
+import Control.Applicative ((<$>), (*>), (<*), (<*>))
 
-data Command = Add Int Int 
+data Command = Add Int Int
   deriving Show
 
 parseRequest :: Text -> Either ParseError Command
@@ -22,14 +23,14 @@ parseRequest txt =
 -- >>> parse addParser "test" "what is the sum of 12 and 5 ?"
 -- Right (Add 12 5)
 addParser :: Parser Command
-addParser = do
-  _ <- string "what is the sum of "
-  a <- many1 digit
-  _ <- string " and "
-  b <- many1 digit
-  _ <- string " ?"
-  return $ Add (read a) (read b)
-
+addParser =
+  Add <$>
+  (string "what is the sum of " *> intParser <* string " and ") <*>
+  intParser <* string " ?"
+  where
+    intParser :: Parser Int
+    intParser = read <$> many1 digit
+    
 -- | command evaluator
 -- >>> evalCommand $ Add 10 15
 -- "25"
