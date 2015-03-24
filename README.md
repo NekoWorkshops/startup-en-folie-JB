@@ -1,7 +1,7 @@
 # startup-en-folie-JB
 startup en folie : atelier proposé par Emmanuel B.
 
-J'ai volontairement laissé mon code dans l'état après la fin du temps imparti lors de l'atelier.
+J'ai volontairement laissé mon code dans l'état après la fin du temps imparti lors de l'atelier, il y aurait pas mal de refactoring et d'amélioration à apporter. Par exemple, les `try` dans le parseurs sont probablements inutiles, et révellent un manque de test et/ou de compréhension de la bibliothèque de `Parsec`. 
 
 # Retrospective
 
