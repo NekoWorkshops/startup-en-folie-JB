@@ -5,12 +5,12 @@ module Command (
   , evalCommand
   ) where
 
-import           Data.Text        (Text)
-import qualified Data.Text        as T
-import           Text.Parsec      (ParseError, digit, many1, parse, string, choice,
-                                   oneOf)
-import           Text.Parsec.Text (Parser)
-import Control.Applicative ((<$>), (<$), (*>), (<*), (<*>))
+import           Control.Applicative ((*>), (<$), (<$>), (<*), (<*>))
+import           Data.Text           (Text)
+import qualified Data.Text           as T
+import           Text.Parsec         (ParseError, choice, digit, many1, oneOf,
+                                      parse, string)
+import           Text.Parsec.Text    (Parser)
 
 data Command = Add Int Int
                | Name
