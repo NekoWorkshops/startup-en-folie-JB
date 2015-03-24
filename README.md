@@ -1,6 +1,8 @@
 # startup-en-folie-JB
 startup en folie : atelier proposé par Emmanuel B.
 
+J'ai volontairement laissé mon code dans l'état après la fin du temps imparti lors de l'atelier.
+
 # Retrospective
 
 ## Mes sentiments sur la session
